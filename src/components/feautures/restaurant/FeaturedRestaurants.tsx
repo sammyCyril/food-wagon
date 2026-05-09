@@ -24,18 +24,35 @@ export default function FeaturedRestaurants() {
 
     fetchRestaurants();
   }, []);
-  if (loading) {
-    return (
-      <section className="bg-white py-[40px]">
-        <Container>
-          <FoodCardSkeleton />
-        </Container>
-      </section>
-    );
-  }
 
+if (loading) {
   return (
-    <section className="bg-[#ffffff] py-[70px]">
+    <section className="bg-white py-[70px]">
+      <Container>
+        
+        {/* TITLE SKELETON */}
+        <div className="flex justify-center mb-10">
+          <div className="h-7 w-52 rounded-md bg-gray-200 animate-pulse" />
+        </div>
+
+        {/* GRID */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <FoodCardSkeleton key={index} />
+          ))}
+        </div>
+
+        {/* BUTTON SKELETON */}
+        <div className="mt-15 flex justify-center">
+          <div className="h-10 w-32 rounded-full bg-gray-200 animate-pulse" />
+        </div>
+
+      </Container>
+    </section>
+  );
+}
+  return (
+    <section className="bg-[#ffffff] py-[70px] ">
       <Container>
 
         {/* TITLE */}
@@ -50,13 +67,13 @@ export default function FeaturedRestaurants() {
           ))}
         </div>
 
-        <div className="mt-15 flex justify-center gap-2">
+        {/* <div className="mt-15 flex justify-center gap-2">
           <Button 
           className="flex items-center gap-2 text-sm border-none">
             View All
             <ArrowRight size={18} />
           </Button>
-        </div>
+        </div> */}
 
 
       </Container>

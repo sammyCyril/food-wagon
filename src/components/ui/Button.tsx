@@ -1,34 +1,78 @@
-type Props = {
+import { ButtonHTMLAttributes } from "react";
+
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline";
-  onClick?: () => void;
-  className?: string;        // ← Added for extra flexibility
+  isLoading?: boolean;
 };
 
-const Button = ({ 
-  children, 
-  variant = "primary", 
-  onClick, 
-  className = "" 
+const Button = ({
+  children,
+  variant = "primary",
+  className = "",
+  isLoading = false,
+  disabled,
+  ...props
 }: Props) => {
-  
-  const base = "px-6 py-3 rounded-xl font-medium transition-all duration-200 active:scale-95";
+
+  const base =
+    "px-6 py-3 rounded-xl font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const styles = {
-    primary: "bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700",
-    secondary: "bg-white text-orange-600 hover:bg-orange-200",
-    outline: "border border-black text-black hover:bg-gray-100",
+    primary:
+      "bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700",
+
+    secondary:
+      "bg-white text-orange-600 ",
+
+    outline:
+      "border border-black text-black hover:bg-gray-100",
   };
 
   return (
-    <button 
+    <button
       className={`${base} ${styles[variant]} ${className}`}
-      onClick={onClick}
-      
+      disabled={disabled || isLoading}
+      {...props}
     >
-      {children}
+      {isLoading ? "Loading..." : children}
     </button>
   );
 };
 
 export default Button;
+
+// type Props = {
+//   children: React.ReactNode;
+//   variant?: "primary" | "secondary" | "outline";
+//   onClick?: () => void;
+//   className?: string;        // ← Added for extra flexibility
+// };
+
+// const Button = ({ 
+//   children, 
+//   variant = "primary", 
+//   onClick, 
+//   className = "" 
+// }: Props) => {
+  
+//   const base = "px-6 py-3 rounded-xl font-medium transition-all duration-200 active:scale-95";
+
+//   const styles = {
+//     primary: "bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700",
+//     secondary: "bg-white text-orange-600 ",
+//     outline: "border border-black text-black hover:bg-gray-100",
+//   };
+
+//   return (
+//     <button 
+//       className={`${base} ${styles[variant]} ${className}`}
+//       onClick={onClick}
+      
+//     >
+//       {children}
+//     </button>
+//   );
+// };
+
+// export default Button;

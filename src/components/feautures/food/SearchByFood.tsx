@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "@/components/layout/Container";
 import { Foodss } from "@/data/type";
 import { getFoodss } from "@/data/foods";
-import FoodCardSkeleton from "@/components/ui/FoodCardSkeleton";
+import FoodCategorySkeleton from "@/components/ui/FoodCategorySkeleton";
 
 
 export default function SearchByFood() {
@@ -24,14 +24,13 @@ export default function SearchByFood() {
   }, []);
 if (loading) {
   return (
-    <section className="bg-white py-[40px]">
+    <section className="bg-[#f5efe6] py-[60px]">
       <Container>
-        <FoodCardSkeleton />
+        <FoodCategorySkeleton />
       </Container>
     </section>
   );
 }
-
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
 
@@ -46,11 +45,11 @@ if (loading) {
       <Container>
 
         {/* TOP BAR */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-end mb-8">
 
-          <h2 className="hidden md:block text-[22px] font-semibold">
+          {/* <h2 className="hidden md:block text-[22px] font-semibold">
             Search by Food
-          </h2>
+          </h2> */}
 
           <div className="flex items-center gap-4">
 

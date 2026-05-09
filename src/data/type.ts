@@ -32,3 +32,10 @@ export type Foodss = {
   name: string;
   image: string;
 }
+
+export type User = {
+  _id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+};

@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <FoodGrid />
       <HowItWorks />
@@ -22,7 +22,7 @@ export default function Home() {
       <SearchByFood />
       <PromoCard />
       <CTASection />
-      <Footer />
+      {/* <Footer /> */}
     </>
 
 

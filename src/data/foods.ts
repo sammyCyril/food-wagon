@@ -1,6 +1,6 @@
 // data/foods.ts
 
-import { Food, Foodss, Item } from "./type";
+import { Food, Foodss, Item, User } from "./type";
 
  const foods: Food[] = [
   {
@@ -100,7 +100,7 @@ export const getFoods = async (): Promise<Food[]>  => {
   },
 ];
 export const getItems = async (): Promise<Item[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return items;
 };
 
@@ -186,7 +186,7 @@ const restaurants: Restaurant[] = [
   },
 ];
 export const getRestaurants = async (): Promise<Restaurant[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return restaurants;
 }
 
@@ -203,6 +203,21 @@ export const getRestaurants = async (): Promise<Restaurant[]> => {
   { _id: "10", name: "Steak", image: "/pizza/pizza5.jpg" },
 ];
 export const getFoodss = async (): Promise<Foodss[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
   return foodss;
 }
+
+export const mockUsers: User[] = [
+  {
+    _id: "1",
+    name: "Sam",
+    email: "sam@sam.com",
+    avatar: "",
+  },
+  {
+    _id: "2",
+    name: "John Doe",
+    email: "john@test.com",
+    avatar: "",
+  },
+];

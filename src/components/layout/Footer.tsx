@@ -2,107 +2,145 @@ import Container from "./Container";
 
 export default function Footer() {
   return (
-    <footer className="bg-black py-16">
+    <footer className="bg-black text-white py-12">
       <Container>
-        {/* Top Cities */}
-        <div>
-          <h3 className="text-white text-xl font-bold mb-6">Our top cities</h3>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-4 text-sm">
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">New York</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Los Angeles</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Chicago</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Houston</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Philadelphia</a>
+        <div className="grid gap-10 md:grid-cols-4">
 
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">San Francisco</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Miami</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Boston</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Seattle</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Dallas</a>
+          {/* BRAND */}
+          <div>
+            <h2 className="text-2xl font-bold text-orange-500">
+              foodwagon
+            </h2>
 
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Atlanta</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Denver</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Phoenix</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Detroit</a>
-            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">Las Vegas</a>
+            <p className="mt-4 text-sm text-gray-400 leading-6">
+              Delicious meals delivered to your doorstep anytime.
+            </p>
           </div>
-        </div>
 
-        <div className="border-b border-gray-700 my-12" />
+          {/* COMPANY */}
+          <div>
+            <h3 className="font-semibold mb-4">
+              Company
+            </h3>
 
-        {/* Main Footer Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  About
+                </a>
+              </li>
 
-          {/* Company */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white text-lg font-medium mb-4">Company</h3>
-            <ul className="space-y-2.5 text-gray-300">
-              <li><a href="#" className="hover:text-white transition">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition">Team</a></li>
-              <li><a href="#" className="hover:text-white transition">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition">Blog</a></li>
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Careers
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Blog
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Careers
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Careers
+                </a>
+              </li>
+
             </ul>
           </div>
 
-          {/* Contact */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white text-lg font-medium mb-4">Contact</h3>
-            <ul className="space-y-2.5 text-gray-300">
-              <li><a href="#" className="hover:text-white transition">Help & Support</a></li>
-              <li><a href="#" className="hover:text-white transition">Partner with us</a></li>
-              <li><a href="#" className="hover:text-white transition">Ride with us</a></li>
+          {/* SUPPORT */}
+          <div>
+            <h3 className="font-semibold mb-4">
+              Support
+            </h3>
+
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Help Center
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Terms
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Privacy Policy
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Help Center
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="hover:text-orange-400 transition">
+                  Terms
+                </a>
+              </li>
+
             </ul>
           </div>
 
-          {/* Legal */}
-          <div className="lg:col-span-3">
-            <h3 className="text-white text-lg font-medium mb-4">Legal</h3>
-            <ul className="space-y-2.5 text-gray-300">
-              <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-white transition">Refund & Cancellation</a></li>
-              <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition">Cookie Policy</a></li>
-            </ul>
-          </div>
+          {/* NEWSLETTER */}
+          <div>
+            <h3 className="font-semibold mb-4">
+              Stay Updated
+            </h3>
 
-          {/* Follow Us */}
-          <div className="lg:col-span-3 lg:pl-8 border-l border-gray-700">
-            <h3 className="text-white text-lg font-medium mb-4">FOLLOW US</h3>
-
-            <div className="flex gap-5 mb-6">
-              {/* Facebook */}
-              <a href="#" className="text-gray-400 hover:text-white text-2xl transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-              </a>
-
-              {/* Twitter / X */}
-              <a href="#" className="text-gray-400 hover:text-white text-2xl transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25l-7.129 8.132L3.75 2.25H.5l7.36 10.42L.5 21.75h3.75l6.43-7.32 6.564 7.32h3.75l-7.74-10.92L23.5 2.25h-5.256z"/>
-                </svg>
-              </a>
-            </div>
-
-            <p className="text-gray-300 mb-4 text-sm">
-              Receive exclusive offers in your mailbox
+            <p className="text-sm text-gray-400 mb-4">
+              Get offers and updates directly in your inbox.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            
+
+            {/* SOCIALS */}
+            <div className="flex items-center gap-4 mt-6 text-gray-400">
+             <a href="#" className="text-gray-400 hover:text-white text-2xl transition"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"> <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/> </svg> </a>
+
+              {/* <a href="#" className="hover:text-white transition">
+                <InstagramIcon size={20} />
+              </a> */}
+
+             <a href="#" className="text-gray-400 hover:text-white text-2xl transition"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"> <path d="M18.244 2.25l-7.129 8.132L3.75 2.25H.5l7.36 10.42L.5 21.75h3.75l6.43-7.32 6.564 7.32h3.75l-7.74-10.92L23.5 2.25h-5.256z"/> </svg> </a>
+            </div>
+
+            <div className="flex gap-2 mt-5" >
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 border border-gray-700 focus:border-orange-400 text-gray-200 px-4 py-3 rounded-lg flex-1 focus:outline-none"
+                placeholder="Your email"
+                className="flex-1 bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-orange-400"
               />
-              <button className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-lg font-medium text-white transition whitespace-nowrap">
-                Subscribe
+
+              <button className="bg-orange-500 hover:bg-orange-600 px-4 rounded-lg text-sm font-medium transition">
+                Join
               </button>
             </div>
           </div>
 
         </div>
+
+        {/* BOTTOM */}
+        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
+          © 2026 foodwagon. All rights reserved.
+        </div>
+
       </Container>
     </footer>
   );

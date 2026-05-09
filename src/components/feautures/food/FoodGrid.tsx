@@ -23,10 +23,13 @@ export default function FoodGrid() {
 
 if (loading) {
   return (
-    <section className="bg-white py-[40px]">
+    <section className="bg-white py-[60px]">
       <Container>
-        <FoodCardSkeleton />
-        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-3">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <FoodCardSkeleton key={index} />
+          ))}
+        </div>
       </Container>
     </section>
   );
