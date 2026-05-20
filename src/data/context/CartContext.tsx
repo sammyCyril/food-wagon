@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 import { Item } from "@/data/type";
 
 type CartItem = Item & {
@@ -13,45 +19,47 @@ type CartContextType = {
   increaseQuantity: (_id: string) => void;
   decreaseQuantity: (_id: string) => void;
   removeFromCart: (_id: string) => void;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
 
-export const CartProvider = ({children,}: {children: React.ReactNode;}) => {
+const CART_KEY = "cart";
+
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [hydrated, setHydrated] = useState(false);
 
+  // ✅ LOAD CART ON FIRST CLIENT MOUNT
   useEffect(() => {
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
-}, [cart]);
+    const stored = localStorage.getItem(CART_KEY);
 
-useEffect(() => {
-  const savedCart =
-    localStorage.getItem("cart");
+    if (stored) {
+      try {
+        setCart(JSON.parse(stored));
+      } catch {
+        setCart([]);
+      }
+    }
 
-  if (savedCart) {
-    setCart(JSON.parse(savedCart));
-  }
-}, []);
+    setHydrated(true);
+  }, []);
 
+  // ✅ SAVE ONLY AFTER HYDRATION
+  useEffect(() => {
+    if (!hydrated) return;
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }, [cart, hydrated]);
 
   const addToCart = (item: Item) => {
-    console.log(cart);
     setCart((prev) => {
-      const existingItem = prev.find(
-        (cartItem) => item._id === cartItem._id
-      );
+      const exists = prev.find((p) => p._id === item._id);
 
-      if (existingItem) {
-        return prev.map((cartItem) =>
-          cartItem._id === item._id
-            ? {
-                ...cartItem ,
-                quantity: cartItem.quantity + 1,
-              }
-            : cartItem
+      if (exists) {
+        return prev.map((p) =>
+          p._id === item._id
+            ? { ...p, quantity: p.quantity + 1 }
+            : p
         );
       }
 
@@ -60,41 +68,49 @@ useEffect(() => {
   };
 
   const increaseQuantity = (_id: string) => {
-  setCart((prev) =>
-    prev.map((item) =>
-      item._id === _id
-        ? {
-            ...item,
-            quantity: item.quantity + 1,
-          }
-        : item
-    )
-  );
-};
-
-const decreaseQuantity = (_id: string) => {
-  setCart((prev) =>
-    prev
-      .map((item) =>
+    setCart((prev) =>
+      prev.map((item) =>
         item._id === _id
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
+          ? { ...item, quantity: item.quantity + 1 }
           : item
       )
-      .filter((item) => item.quantity > 0)
-  );
+    );
+  };
+
+  const decreaseQuantity = (_id: string) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item._id === _id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
+  const removeFromCart = (_id: string) => {
+    setCart((prev) => prev.filter((item) => item._id !== _id));
+  };
+
+  const clearCart = () => {
+  setCart([]);
 };
 
-const removeFromCart = (_id: string) => {
-  setCart((prev) =>
-    prev.filter((item) => item._id !== _id)
-  );
-};
+  // ✅ IMPORTANT: prevent UI flash of empty cart
+  if (!hydrated) return null;
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
+        clearCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -103,9 +119,7 @@ const removeFromCart = (_id: string) => {
 export const useCart = () => {
   const context = useContext(CartContext);
 
-  if (!context) {
-    throw new Error("useCart must be used inside CartProvider");
-  }
+  if (!context) throw new Error("useCart must be used inside CartProvider");
 
   return context;
 };

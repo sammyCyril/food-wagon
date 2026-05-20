@@ -165,12 +165,11 @@ if (loading) {
 
                   {/* BUTTON */}
                   <Button
-                    className="mt-3 w-full bg-orange-500 text-white text-sm py-2 rounded-md"
+                    className="mt-3 w-full"
                     onClick={() => {
-                      addToCart(item)
-                      toast.success("Added to cart")
-                      }                    
-                    }
+                      addToCart(item);
+                      toast.success("Added to cart");
+                    }}
                   >
                     Order Now
                   </Button>

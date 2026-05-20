@@ -12,27 +12,20 @@ import Link from "next/link";
 import {loginSchema,LoginSchemaType,} from "@/components/lib/validations/auth";
 import { useAuth } from "@/data/context/AuthContext";
 
-import { useRouter } from "next/navigation";
-
-export default function LoginForm() {
+export default function RegisterForm() {
   const { login } = useAuth();
   const {register,handleSubmit,formState: { errors, isSubmitting },
 } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
   });
 
- const router = useRouter();
-
   const onSubmit = async (data: LoginSchemaType) => {
-    await new Promise((res) => setTimeout(res, 1200));
+  await new Promise((res) => setTimeout(res, 1200));
 
-    login(data.email);
+  login(data.email);
 
-    toast.success("Login successful");
-
-    router.push("/");
-  };
-
+  toast.success("Login successful");
+};
 
   return (
     <div className="w-full max-w-md">
@@ -40,7 +33,7 @@ export default function LoginForm() {
       {/* HEADER */}
       <div className="mb-10">
         <h2 className="text-3xl font-bold">
-          Login
+          Register
         </h2>
 
         <p className="mt-2 text-gray-500">
@@ -53,6 +46,17 @@ export default function LoginForm() {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-5"
       >
+        <Input
+          label="firstname"
+          type="name"
+          placeholder="Enter your name" 
+        />
+
+        <Input
+          label="secondname"
+          type="name"
+          placeholder="Enter your name" 
+        />
         
         {/* EMAIL */}
         <Input
@@ -97,18 +101,6 @@ export default function LoginForm() {
           {isSubmitting ? "Logging in..." : "Login"}
         </Button>
       </form>
-
-      {/* FOOTER */}
-      <p className="mt-6 text-center text-sm text-gray-500">
-        Don&apos;t have an account?{" "}
-        
-        <Link
-          href="/register"
-          className="text-orange-500 font-medium hover:underline"
-        >
-          Sign up
-        </Link>
-      </p>
     </div>
   );
 }

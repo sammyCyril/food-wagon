@@ -10,6 +10,7 @@ import { AuthProvider } from "@/data/context/AuthContext";
 
 import { Toaster } from "sonner";
 import Footer from "@/components/layout/Footer";
+import { OrdersProvider } from "@/data/context/OrdersContext";
 
 export const metadata: Metadata = {
   title: "Foodwagon",
@@ -28,20 +29,16 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <SearchProvider>
-
-              <Navbar />
-
-              <main>
-                {children}
-              </main>
-
-              <Toaster
-                position="top-right"
-                richColors
-              />
-
-              <Footer />
-
+              <OrdersProvider>
+               
+                  {children}
+               
+                <Toaster
+                  position="top-center"
+                  richColors
+                />
+                
+              </OrdersProvider>
             </SearchProvider>
           </CartProvider>
         </AuthProvider>

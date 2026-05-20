@@ -221,3 +221,12 @@ export const mockUsers: User[] = [
     avatar: "",
   },
 ];
+
+export const mockData =
+{
+  id: "123",
+  items: [],
+  total: 4500,
+  status: "pending",
+  date: "2026-05-10"
+}
