@@ -9,6 +9,7 @@ import { SearchProvider } from "@/data/context/SearchContext";
 import { AuthProvider } from "@/data/context/AuthContext";
 
 import { Toaster } from "sonner";
+import OfflineMessage from "@/components/admin/OfflineMessage";
 
 
 
@@ -26,7 +27,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
 
-        <AuthProvider>
+       <OfflineMessage />
+         <AuthProvider>
           <CartProvider>
             <SearchProvider>
               
@@ -42,6 +44,7 @@ export default function RootLayout({
             </SearchProvider>
           </CartProvider>
         </AuthProvider>
+       
 
       </body>
     </html>

@@ -59,11 +59,18 @@ export default function Hero() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="flex-1 flex justify-center lg:justify-end">
+         <div className="flex-1 flex justify-center lg:justify-end lg:self-end">
             <img
-              src="/pizza/pizza.jpg"
+              src="/pizza/pza.png"
               alt="Delicious food"
-              className="w-full max-w-[380px] md:max-w-[450px] lg:max-w-[420px] drop-shadow-2xl"
+              className="
+                w-full
+                max-w-[380px]
+                md:max-w-[450px]
+                lg:max-w-[420px]
+                translate-y-10
+                drop-shadow-[0_35px_35px_rgba(0,0,0,0.35)]
+              "
             />
           </div>
 

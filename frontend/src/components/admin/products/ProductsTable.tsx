@@ -22,7 +22,7 @@ type Product = {
   category: string;
   price: number;
   stock: number;
-  status: "Active" | "Low Stock" | "Out Of Stock";
+  status: "Active" | "Low Stock" | "sold out";
 };
 
 export default function ProductsTable() {
@@ -45,7 +45,7 @@ export default function ProductsTable() {
 
     setProducts(data);
   } catch (error) {
-    console.log(error);
+    console.log("Fetch error:", error);
   } finally {
     setLoading(false);
   }

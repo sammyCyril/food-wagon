@@ -33,7 +33,7 @@ export const createOrder = async ( req: AuthRequest, res: Response): Promise<voi
 
   if (product.stock < item.quantity) {
     res.status(400).json({
-      message: `${item.name} is out of stock`,
+      message: `${item.name} is sold out`,
     });
     return;
   }
@@ -41,7 +41,7 @@ export const createOrder = async ( req: AuthRequest, res: Response): Promise<voi
   product.stock -= item.quantity;
 
   if (product.stock <= 0) {
-    product.status = "Out Of Stock";
+    product.status = "sold out";
   } else if (product.stock <= 10) {
     product.status = "Low Stock";
   } else {
@@ -57,6 +57,7 @@ const order = await Order.create({
   customerName,
   address,
   items,
+  phone,
   totalAmount,
   paymentMethod,
  paymentStatus: "Pending",

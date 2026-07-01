@@ -14,7 +14,7 @@ interface ProductRowProps {
    status:
     | "Active"
     | "Low Stock"
-    | "Out Of Stock";
+    | "sold out";
 
     
   onEdit: () => void;

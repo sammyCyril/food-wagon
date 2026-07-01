@@ -99,7 +99,7 @@ export default function OrdersPage() {
 
           {orders.length === 0 ? (
             <div className="bg-white rounded-3xl p-16 text-center max-w-md mx-auto">
-              <Package className="w-16 h-16 mx-auto text-gray-300 mb-6" />
+             
 
               <h2 className="text-2xl font-semibold mb-3">
                 No orders yet

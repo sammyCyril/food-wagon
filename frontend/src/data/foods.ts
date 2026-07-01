@@ -144,7 +144,7 @@ const restaurants: Restaurant[] = [
     _id: "2",
     image: "/pizza/pizza6.jpg",
     name: "Pizzahub",
-    logo: "/images/logo2.png",
+    logo: "/pizza/pizza5.jpg",
     rating: 40,
     discount: "15% off",
     fast: true,
@@ -166,7 +166,7 @@ const restaurants: Restaurant[] = [
     _id: "4",
     image: "/pizza/pizza3.jpg",
     name: "Foodworld",
-    logo: "/images/logo1.png",
+    logo: "/pizza/pizza4.jpg",
     rating: 46,
     discount: "20% off",
     fast: true,
@@ -177,7 +177,7 @@ const restaurants: Restaurant[] = [
     _id: "5", 
     image: "/pizza/pizza4.jpg",
     name: "Pizzahub",
-    logo: "/images/logo2.png",
+    logo: "/pizza/pizza3.jpg",
     rating: 40,
     discount: "15% off",
     fast: true,
@@ -188,7 +188,7 @@ const restaurants: Restaurant[] = [
     _id: "6",
     image: "/pizza/pizza5.jpg",
     name: "Donuts hut",
-    logo: "/images/logo3.png",
+   logo: "/pizza/pizza2.jpg",
     rating: 20,
     discount: "10% off",
     fast: true,
@@ -217,21 +217,6 @@ export const getFoodss = async (): Promise<Foodss[]> => {
   await new Promise((resolve) => setTimeout(resolve, 4000));
   return foodss;
 }
-
-export const mockUsers: User[] = [
-  {
-    _id: "1",
-    name: "Sam",
-    email: "sam@sam.com",
-    avatar: "",
-  },
-  {
-    _id: "2",
-    name: "John Doe",
-    email: "john@test.com",
-    avatar: "",
-  },
-];
 
 export const mockData =
 {

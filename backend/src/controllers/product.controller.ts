@@ -46,10 +46,10 @@ export const createProduct = async (
       return;
     }
 
-    let status: "Active" | "Low Stock" | "Out Of Stock" = "Active";
+    let status: "Active" | "Low Stock" | "sold out" = "Active";
 
     if (Number(stock) <= 0) {
-      status = "Out Of Stock";
+      status = "sold out";
     } else if (Number(stock) <= 10) {
       status = "Low Stock";
     }
@@ -175,11 +175,11 @@ export const updateProduct = async (
     let status:
       | "Active"
       | "Low Stock"
-      | "Out Of Stock" =
+      | "sold out" =
       "Active";
 
     if (stock <= 0) {
-      status = "Out Of Stock";
+      status = "sold out";
     } else if (stock <= 10) {
       status = "Low Stock";
     }
@@ -232,8 +232,8 @@ export const updateProduct = async (
       product.stock > 0
     ) {
       await Notification.create({
-        title: "Out Of Stock",
-        message: `${updatedProduct?.name} is out of stock`,
+        title: "sold out",
+        message: `${updatedProduct?.name} is sold out`,
         type: "product",
       });
     }

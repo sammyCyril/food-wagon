@@ -1,6 +1,6 @@
 
 interface ProductStatusBadgeProps {
-    status : "Active" | "Low Stock" | "Out Of Stock";
+    status : "Active" | "Low Stock" | "sold out";
 }
 
 const statusStyles = {
@@ -8,7 +8,7 @@ const statusStyles = {
 
      "Low Stock": "bg-yellow-100 text-yellow-700",
 
-     "Out Of Stock": "bg-red-100 text-red-700",
+     "sold out": "bg-red-100 text-red-700",
 }
 
 const dotStyles = {
@@ -16,7 +16,7 @@ const dotStyles = {
 
      "Low Stock": "bg-yellow-500",
 
-     "Out Of Stock": "bg-red-500",
+     "sold out": "bg-red-500",
 } as const
 
 export default function ProductStatusBadge({status,}: ProductStatusBadgeProps) {

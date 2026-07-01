@@ -1,8 +1,8 @@
 "use client";
 
-import { useAuth } from "@/data/context/AuthContext";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/data/context/AuthContext";
 
 export default function AdminRoute({
   children,
@@ -10,17 +10,16 @@ export default function AdminRoute({
   children: React.ReactNode;
 }) {
   const { user } = useAuth();
-
   const router = useRouter();
 
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.replace("/login");
       return;
     }
 
     if (user.role !== "admin") {
-      router.push("/");
+      router.replace("/");
     }
   }, [user, router]);
 

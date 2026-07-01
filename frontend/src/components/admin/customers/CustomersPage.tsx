@@ -32,11 +32,10 @@ export default function CustomersPage() {
 
     const data = await getUsers();
 
-    console.log(data);
+   
 
     setCustomers( data );
-//     console.log("data:", data);
-// console.log("isArray:", Array.isArray(data));
+;
   } catch (error) {
     console.log(error);
   } finally {

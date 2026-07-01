@@ -56,7 +56,7 @@ const productSchema = new mongoose.Schema(
       enum: [
         "Active",
         "Low Stock",
-        "Out Of Stock",
+        "sold out",
       ],
       default: "Active",
     },

@@ -7,7 +7,7 @@ const tabs = [
   "All",
   "Active",
   "Low Stock",
-  "Out Of Stock",
+  "sold out",
 ];
 
 export default function ProductStatusTabs({

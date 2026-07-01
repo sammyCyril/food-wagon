@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { createOrder } from "@/services/orders";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { useAuth } from "@/data/context/AuthContext";   // ← Import this
+import Image from "next/image";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -46,6 +47,12 @@ const fullName = `${user?.firstName || ""} ${user?.lastName || ""}`.trim();
 
     try {
       setIsPlacingOrder(true);
+      console.log({
+  phone,
+  address,
+  city,
+  paymentMethod,
+});
 
       await createOrder({
   phone,
@@ -184,18 +191,112 @@ const fullName = `${user?.firstName || ""} ${user?.lastName || ""}`.trim();
 
             {/* RIGHT SIDE - SUMMARY */}
             <aside className="bg-white rounded-2xl p-6 shadow-sm h-fit sticky top-24">
-              {/* Order Summary (same as before) */}
-              <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
-              {/* ... your existing summary code ... */}
+  <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
 
-              <Button 
-                className="w-full"
-                isLoading={isPlacingOrder}
-                onClick={handleOrder}
-              >
-                Place Order - ${total.toFixed(2)}
-              </Button>
-            </aside>
+  {/* Cart Items */}
+  <div className="space-y-4">
+    {cart.map((item) => (
+      <div
+        key={item._id}
+        className="flex items-center justify-between border-b pb-4"
+      >
+        <div className="flex items-center gap-3">
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={60}
+            height={60}
+            className="rounded-lg object-cover"
+          />
+
+          <div>
+            <p className="font-medium">{item.name}</p>
+            <p className="text-sm text-gray-500">
+              Qty: {item.quantity}
+            </p>
+          </div>
+        </div>
+
+        <p className="font-semibold">
+          ${(item.price * item.quantity).toFixed(2)}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* Price Breakdown */}
+  <div className="mt-6 space-y-3">
+    <div className="flex justify-between text-gray-600">
+      <span>Subtotal</span>
+      <span>${subtotal.toFixed(2)}</span>
+    </div>
+
+    <div className="flex justify-between text-gray-600">
+      <span>Delivery Fee</span>
+      <span>${deliveryFee.toFixed(2)}</span>
+    </div>
+
+    <div className="border-t pt-3 flex justify-between text-lg font-bold">
+      <span>Total</span>
+      <span>${total.toFixed(2)}</span>
+    </div>
+  </div>
+
+  {/* Delivery Details */}
+  <div className="mt-8 border-t pt-6 space-y-4">
+    <div>
+      <h3 className="font-semibold mb-2">Deliver To</h3>
+
+      <p className="text-sm text-gray-700">{fullName}</p>
+
+      {phone && (
+        <p className="text-sm text-gray-500">{phone}</p>
+      )}
+
+      {(address || city) && (
+        <p className="text-sm text-gray-500 mt-1">
+          {address}
+          {address && city && ", "}
+          {city}
+          {landmark && ` (${landmark})`}
+        </p>
+      )}
+    </div>
+
+    <div>
+      <h3 className="font-semibold mb-1">Payment</h3>
+
+      <p className="text-sm text-gray-600">
+        {paymentMethod === "cash"
+          ? "💵 Cash on Delivery"
+          : "💳 Card Payment"}
+      </p>
+    </div>
+
+    <div>
+      <h3 className="font-semibold mb-1">
+        Estimated Delivery
+      </h3>
+
+      <p className="text-sm text-gray-600">
+        25–35 mins
+      </p>
+    </div>
+  </div>
+
+  {/* Button */}
+  <Button
+    className="w-full mt-8"
+    isLoading={isPlacingOrder}
+    onClick={handleOrder}
+  >
+    Place Order - ${total.toFixed(2)}
+  </Button>
+
+  <p className="text-xs text-center text-gray-500 mt-4">
+    Your order will be confirmed immediately after placing it.
+  </p>
+</aside>
           </div>
         </Container>
       </main>

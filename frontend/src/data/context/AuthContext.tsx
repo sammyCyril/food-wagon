@@ -57,7 +57,7 @@ if (storedToken) {
     "user",
     JSON.stringify(user)
   );
-console.log(user);
+
   localStorage.setItem(
     "token",
     token

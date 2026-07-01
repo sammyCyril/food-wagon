@@ -13,7 +13,7 @@ type Product = {
   category: string;
   price: number;
   stock: number;
-  status: "Active" | "Low Stock" | "Out Of Stock";
+  status: "Active" | "Low Stock" | "sold out";
 };
 
 type EditProductModalProps = {

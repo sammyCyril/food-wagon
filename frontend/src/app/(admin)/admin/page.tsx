@@ -14,7 +14,7 @@ import { Order } from "@/data/type";
 type Product = {
   _id: string;
   stock: number;
-  status: "Active" | "Low Stock" | "Out Of Stock";
+  status: "Active" | "Low Stock" | "sold out";
 };
 
 export default function AdminDashboardPage() {

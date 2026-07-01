@@ -15,14 +15,13 @@ export const createOrder = async (  orderData: any) => {
       ),
     }
   );
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      "Failed to create order"
-    );
-  }
+  throw new Error(data.message || "Failed to create order");
+}
 
-  return response.json();
+  return data
 };
 
 export const getOrders = async () => {
